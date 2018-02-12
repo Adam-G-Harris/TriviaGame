@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  background-color: #5CA4A9;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,22 @@
+$red: #ED6A5A;
+$blond: #F4F1BB;
+$platinum: #E6EBE0;
+$light-blue: #9BC1BC;
+$medium-blue: #5CA4A9;
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 100vw;
+	height: 100vh;
+}
+
+.container {
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+	background-color: $medium-blue;
+}
