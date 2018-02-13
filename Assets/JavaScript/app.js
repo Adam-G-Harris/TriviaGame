@@ -15,12 +15,7 @@ window.onload = () => {
 
 	function controller() {
 
-		if (!firstTime) {
-
-			document.getElementById('restart').removeEventListener('click', controller);
-		}
-
-		between = 4000;
+		between = 3000;
 		qRight = 0;
 		qWrong = 0;
 		count = -1;
@@ -28,9 +23,17 @@ window.onload = () => {
 		resetNum();
 		clearContent();
 		nextQuestion();
-		setTimeout(listeners, 0);
 
-		firstTime = false;
+		if (!firstTime) {
+
+			document.getElementById('restart').removeEventListener('click', controller);
+
+		} else {
+
+			setTimeout(listeners, 0);
+
+			firstTime = false;
+		}
 	}
 
 	function intermission() {
@@ -73,7 +76,7 @@ window.onload = () => {
 
 	function timerReset() {
 
-		let time = 30;
+		let time = 15;
 
 		function updateTime() {
 
