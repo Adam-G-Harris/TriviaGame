@@ -1,6 +1,6 @@
 window.onload = () => {
 
-	let between, qRight, qWrong, count, interval, str, done, question, firstTime = true;
+	let between, qRight, qWrong, count, interval, str, num, done, inter, question, firstTime = true;
 
 	const allQ = document.getElementsByClassName('question'),
 		q1 = document.getElementById('question1'),
@@ -15,7 +15,7 @@ window.onload = () => {
 
 	function controller() {
 
-		between = 3000;
+		between = 4000;
 		qRight = 0;
 		qWrong = 0;
 		count = -1;
@@ -24,53 +24,47 @@ window.onload = () => {
 		clearContent();
 		nextQuestion();
 
-		if (!firstTime) {
-
-			document.getElementById('restart').removeEventListener('click', controller);
-
-		} else {
+		if (firstTime) {
 
 			setTimeout(listeners, 0);
-
 			firstTime = false;
 		}
 	}
 
 	function intermission() {
 
+		inter = true;
 		styleQuestions(true);
-
 		q3.textContent = `${qRight} answers correct out of ${count + 1}`;
-
+		waiting(between);
 		setTimeout(nextQuestion, between);
 	}
 
 	function selected(e) {
 
-		if (e.target.classList != 'question') {
+		if (!e.target.classList.contains('question') || inter === true) {
 
 			return;
+
+		} else {
+
+			str = e.target.textContent;
+			clearContent();
 		}
 
-		str = e.target.textContent;
-
-		clearContent();
 
 		if (questions[count].answer === str) {
 
-			q1.textContent = `${str} was the correct answer!`;
-
+			q1.innerHTML = `${str} was the <p class='correct special'>correct</p> answer!`;
 			qRight += 1;
 
 		} else {
 
-			q1.textContent = `${str} was the wrong answer...`;
-
+			q1.innerHTML = `${str} was the <p class='wrong special'>wrong</p> answer...`;
 			qWrong += 1;
 		}
 
 		done = true;
-
 		intermission();
 	}
 
@@ -85,26 +79,18 @@ window.onload = () => {
 			if (time <= 0) {
 
 				clearInterval(interval);
-
 				done = true;
-
 				qWrong += 1;
-
 				clearContent();
-
 				q1.textContent = 'You ran out of time...';
-
 				intermission();
-
 				return;
 			}
 
 			if (done === true) {
 
 				clearInterval(interval);
-
 				timer.textContent = '';
-
 				return;
 			}
 
@@ -112,7 +98,6 @@ window.onload = () => {
 		}
 
 		updateTime();
-
 		interval = setInterval(updateTime, 1000);
 	}
 
@@ -133,40 +118,58 @@ window.onload = () => {
 		q4.innerHTML = '';
 	}
 
+	function waiting(amount) {
+
+		num = 1;
+
+		function dot() {
+
+			q4.innerHTML += `<div id='dot${num}' class='dot'></div>`;
+
+			if (num >= amount / 1000) {
+
+				q4.innerHTML = '';
+				clearInterval(interval);
+				return;
+			}
+
+			num += 1;
+		}
+
+		let interval = setInterval(dot, 1000);
+	}
+
 	function nextQuestion() {
+
+		inter = false;
 
 		if (count >= questions.length - 1) {
 
 			completed();
-
 			return;
 		}
 
 		styleQuestions(false);
-
 		count += 1;
-
 		done = false;
-
 		question = questions[count];
-
 		title.textContent = question.title;
 		q1.textContent = question.q1;
 		q2.textContent = question.q2;
 		q3.textContent = question.q3;
 		q4.textContent = question.q4;
-
 		timerReset();
+		q1.style.backgroundImage = 'url("/Assets/Images/AlbertEinstein.jpg")';
+		q2.style.backgroundImage = 'url("/Assets/Images/AlexanderBell.jpg")';
+		q3.style.backgroundImage = 'url("/Assets/Images/NikolaTesla.jpg")';
+		q4.style.backgroundImage = 'url("/Assets/Images/ThomasEdison.jpg")';
 	}
 
 	function completed() {
 
 		clearContent();
-
 		q1.textContent = `You got ${qRight} out of ${questions.length} correct!`;
-
 		q3.innerHTML = `<button id='restart'>PLAY AGAIN</button>`;
-
 		document.getElementById('restart').addEventListener('click', controller);
 	}
 
@@ -176,14 +179,14 @@ window.onload = () => {
 
 			for (let i = 0; i < allQ.length; i++) {
 
-				allQ[i].style.border = 'none';
+				allQ[i].classList.remove('ani');
 			}
 
 		} else {
 
 			for (let i = 0; i < allQ.length; i++) {
 
-				allQ[i].style.border = '1px solid #9BC1BC';
+				allQ[i].classList.add('ani');
 			}
 		}
 	}
