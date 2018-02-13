@@ -7,12 +7,73 @@
 body {
   width: 100vw;
   height: 100vh;
+  color: #E6EBE0;
+  background-color: #E6EBE0;
+  font-family: 'Helvetica Neue';
 }
 
 .container {
   width: 80%;
   height: 100%;
+  display: flex;
   margin: 0 auto;
+  font-weight: 400;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
   background-color: #5CA4A9;
+}
+
+.container #title {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  font-weight: 200;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.container #timer {
+  width: 80%;
+  height: 10%;
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .question {
+  width: 80%;
+  height: 10%;
+  display: flex;
+  font-weight: 400;
+  align-items: center;
+  letter-spacing: 2px;
+  justify-content: center;
+}
+
+.container .question #start {
+  width: 30%;
+  height: 100%;
+  outline: none;
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 3px;
+}
+
+.container #question1 > p {
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: 5px;
+}
+
+.container #question3 > button {
+  width: 30%;
+  height: 100%;
+  outline: none;
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 3px;
 }
 /*# sourceMappingURL=style.css.map */
