@@ -2,7 +2,7 @@ window.onload = () => {
 
 	let between, qRight, qWrong, count, interval, str, num, done, inter, question, firstTime = true;
 
-	const allQ = document.getElementsByClassName('question'),
+	let allQ = document.getElementsByClassName('question'),
 		q1 = document.getElementById('question1'),
 		q2 = document.getElementById('question2'),
 		q3 = document.getElementById('question3'),
