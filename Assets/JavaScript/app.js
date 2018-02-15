@@ -118,11 +118,6 @@ window.onload = () => {
 		q4.innerHTML = '';
 		title.innerHTML = '';
 		timer.innerHTML = '';
-
-		q1.style.backgroundImage = null;
-		q2.style.backgroundImage = null;
-		q3.style.backgroundImage = null;
-		q4.style.backgroundImage = null;
 	}
 
 	function waiting(amount) {
@@ -169,16 +164,6 @@ window.onload = () => {
 		q3.textContent = question.q3;
 		q4.textContent = question.q4;
 
-
-		if (question.q1Picture) {
-
-			q1.style.backgroundImage = `url('${question.q1Picture}')`;
-			q2.style.backgroundImage = `url('${question.q2Picture}')`;
-			q3.style.backgroundImage = `url('${question.q3Picture}')`;
-			q4.style.backgroundImage = `url('${question.q4Picture}')`;
-
-		}
-
 		timerReset();
 	}
 
@@ -219,10 +204,6 @@ window.onload = () => {
 		q2: 'Thomas Edison',
 		q3: 'Alexander Graham Bell',
 		q4: 'Nikola Tesla',
-		q1Picture: 'Assets/Images/q1/AlbertEinstein.jpg',
-		q2Picture: 'Assets/Images/q1/ThomasEdison.jpg',
-		q3Picture: 'Assets/Images/q1/AlexanderBell.jpg',
-		q4Picture: 'Assets/Images/q1/NikolaTesla.jpg',
 		answer: 'Albert Einstein'
 	}, {
 		title: 'According to physics, what are the four fundamental forces in nature?',
