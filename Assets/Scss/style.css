@@ -73,21 +73,6 @@ body {
 }
 
 .container .question #start {
-  width: 30%;
-  height: 100%;
-  outline: none;
-  font-size: 2rem;
-  font-weight: 200;
-  letter-spacing: 3px;
-}
-
-.container #question1 > #begin {
-  font-size: 5rem;
-  font-weight: 500;
-  letter-spacing: 5px;
-}
-
-.container #question3 > #start {
   width: auto;
   height: auto;
   border: none;
@@ -101,15 +86,21 @@ body {
   transition: transform .3s, letter-spacing .3s, box-shadow .3s;
 }
 
-.container #question3 > #start:hover {
+.container .question #start:hover {
   cursor: pointer;
   letter-spacing: 4px;
   transform: translateY(-2px);
   box-shadow: 0 3px 5px black;
 }
 
-.container #question3 > #start:active {
+.container .question #start:active {
   box-shadow: inset 0 2px 5px -2px black;
+}
+
+.container #question1 > #begin {
+  font-size: 5rem;
+  font-weight: 500;
+  letter-spacing: 5px;
 }
 
 .container #question4 > .dot {

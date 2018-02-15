@@ -15,6 +15,8 @@ window.onload = () => {
 
 	function controller() {
 
+		start.removeEventListener('click', controller);
+
 		between = 4000;
 		qRight = 0;
 		qWrong = 0;
@@ -110,12 +112,17 @@ window.onload = () => {
 
 	function clearContent() {
 
-		title.innerHTML = '';
-		timer.innerHTML = '';
 		q1.innerHTML = '';
 		q2.innerHTML = '';
 		q3.innerHTML = '';
 		q4.innerHTML = '';
+		title.innerHTML = '';
+		timer.innerHTML = '';
+
+		q1.style.backgroundImage = null;
+		q2.style.backgroundImage = null;
+		q3.style.backgroundImage = null;
+		q4.style.backgroundImage = null;
 	}
 
 	function waiting(amount) {
@@ -149,28 +156,38 @@ window.onload = () => {
 			return;
 		}
 
-		styleQuestions(false);
 		count += 1;
 		done = false;
+		styleQuestions(false);
+
 		question = questions[count];
+
 		title.textContent = question.title;
+
 		q1.textContent = question.q1;
 		q2.textContent = question.q2;
 		q3.textContent = question.q3;
 		q4.textContent = question.q4;
+
+
+		if (question.q1Picture) {
+
+			q1.style.backgroundImage = `url('${question.q1Picture}')`;
+			q2.style.backgroundImage = `url('${question.q2Picture}')`;
+			q3.style.backgroundImage = `url('${question.q3Picture}')`;
+			q4.style.backgroundImage = `url('${question.q4Picture}')`;
+
+		}
+
 		timerReset();
-		q1.style.backgroundImage = 'url("/Assets/Images/AlbertEinstein.jpg")';
-		q2.style.backgroundImage = 'url("/Assets/Images/AlexanderBell.jpg")';
-		q3.style.backgroundImage = 'url("/Assets/Images/NikolaTesla.jpg")';
-		q4.style.backgroundImage = 'url("/Assets/Images/ThomasEdison.jpg")';
 	}
 
 	function completed() {
 
 		clearContent();
 		q1.textContent = `You got ${qRight} out of ${questions.length} correct!`;
-		q3.innerHTML = `<button id='restart'>PLAY AGAIN</button>`;
-		document.getElementById('restart').addEventListener('click', controller);
+		q3.innerHTML = `<button id='start'>PLAY AGAIN</button>`;
+		start = document.getElementById('start').addEventListener('click', controller);
 	}
 
 	function styleQuestions(reverse) {
@@ -202,6 +219,10 @@ window.onload = () => {
 		q2: 'Thomas Edison',
 		q3: 'Alexander Graham Bell',
 		q4: 'Nikola Tesla',
+		q1Picture: '/Assets/Images/q1/AlbertEinstein.jpg',
+		q2Picture: '/Assets/Images/q1/ThomasEdison.jpg',
+		q3Picture: '/Assets/Images/q1/AlexanderBell.jpg',
+		q4Picture: '/Assets/Images/q1/NikolaTesla.jpg',
 		answer: 'Albert Einstein'
 	}, {
 		title: 'According to physics, what are the four fundamental forces in nature?',
