@@ -219,10 +219,10 @@ window.onload = () => {
 		q2: 'Thomas Edison',
 		q3: 'Alexander Graham Bell',
 		q4: 'Nikola Tesla',
-		q1Picture: '/Assets/Images/q1/AlbertEinstein.jpg',
-		q2Picture: '/Assets/Images/q1/ThomasEdison.jpg',
-		q3Picture: '/Assets/Images/q1/AlexanderBell.jpg',
-		q4Picture: '/Assets/Images/q1/NikolaTesla.jpg',
+		q1Picture: 'Assets/Images/q1/AlbertEinstein.jpg',
+		q2Picture: 'Assets/Images/q1/ThomasEdison.jpg',
+		q3Picture: 'Assets/Images/q1/AlexanderBell.jpg',
+		q4Picture: 'Assets/Images/q1/NikolaTesla.jpg',
 		answer: 'Albert Einstein'
 	}, {
 		title: 'According to physics, what are the four fundamental forces in nature?',
